@@ -78,7 +78,7 @@
 		 * Сохранить конфиг расшерения
 		 *
 		 * @param      $params
-		 * @param bool $extensionsId
+		 * @param INT $extensionsId
 		 *
 		 * @throws \Exception
 		 * @author    Gartes

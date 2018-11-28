@@ -47,7 +47,7 @@
 		 * @param   string    $name     Name of property to retrieve
 		 * @param   Registry  $options  Google options object.
 		 *
-		 * @return zazCore  zazCore embed API object.
+		 * @return zazExtensions
 		 *
 		 * @since   12.3
 		 */
