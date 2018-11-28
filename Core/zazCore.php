@@ -58,6 +58,9 @@
 				$options = $this->options;
 			}
 			
+			
+			
+			
 			switch ($name)
 			{
 				case 'extensions':
