@@ -47,7 +47,7 @@
 		 * @param   string    $name     Name of property to retrieve
 		 * @param   Registry  $options  Google options object.
 		 *
-		 * @return  JGoogleEmbed  Google embed API object.
+		 * @return zazCore  zazCore embed API object.
 		 *
 		 * @since   12.3
 		 */
