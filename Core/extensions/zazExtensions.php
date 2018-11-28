@@ -43,6 +43,14 @@
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
 		/**
 		 * Gets the id of the Joomla table where the plugin is registered
 		 * Получает идентификатор таблицы Joomla, где зарегистрирован плагин
