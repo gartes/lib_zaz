@@ -11,7 +11,6 @@
 	
 	use JFactory;
 	use Joomla\Registry\Registry;
-	
 	use Core\CoreEmbed;
 	use JTable;
 	
