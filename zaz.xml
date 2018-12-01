@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="library" method="upgrade" version="3.0">
+    <name>ZAZib</name>
+    <libraryname>zaz</libraryname>
+    <author>Gartes</author>
+    <creationDate>01.12.2018</creationDate>
+    <copyright>2018 (C) Gartes</copyright>
+    <license>GNU/GPLv3</license>
+    <authorEmail>sad.net79@gmail.com</authorEmail>
+    <authorUrl></authorUrl>
+    <version>1.0.0</version>
+    <description>Library ZAZib by Gartes</description>
+
+    <files>
+        <folder>Core</folder>
+        <file>zaz.xml</file>
+
+    </files>
+</extension>
