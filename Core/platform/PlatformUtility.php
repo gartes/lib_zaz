@@ -46,4 +46,22 @@
 		}#END FN
 		
 		
+		public static function log($message, $priority, $filename)
+		{
+			jimport('joomla.log.log');
+			JLog::addLogger(
+				array(
+					'text_file' => $filename
+				), JLog::ALL,
+				array ('plg_jch_optimize')
+			);
+			JLog::add(JText::_($message), constant('JLog::' . $priority), 'plg_jch_optimize');
+		}
+		
+		
+		public static function unixCurrentDate()
+		{
+			return JFactory::getDate('now', 'GMT')->toUnix();
+		}
+		
 	}#END CLASS
