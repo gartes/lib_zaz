@@ -7,15 +7,35 @@
 	 * @license     A "Slug" license name e.g. GPL2
 	 */
 	
-	namespace Core;
+	namespace Optimize;
 	
 	
 	
 	use Joomla\Registry\Registry;
 	use JUri;
 	
-	abstract class CoreEmbed
+	
+	include_once JPATH_LIBRARIES . '/zaz/Core/vendor/autoload.php' ;
+	
+	abstract class OptimizeEmbed
 	{
+		
+		
+		
+		//regex for double quoted strings
+		const DOUBLE_QUOTE_STRING = '"(?>(?:\\\\.)?[^\\\\"]*+)+?(?:"|(?=$))';
+		//regex for single quoted string
+		const SINGLE_QUOTE_STRING = "'(?>(?:\\\\.)?[^\\\\']*+)+?(?:'|(?=$))";
+		//regex for block comments
+		const BLOCK_COMMENTS = '/\*(?>[^/\*]++|//|\*(?!/)|(?<!\*)/)*+\*/';
+		//regex for line comments
+		const LINE_COMMENTS = '//[^\r\n]*+';
+		//regex for HTML comments
+		const HTML_COMMENTS = '(?:(?:<!--|(?<=[\s/^])-->)[^\r\n]*+)';
+		
+		const URI = '(?<=url)\(\s*+(?:"[^"]*+"|\'[^\']*+\'|[^)]*+)\s*+\)';
+		
+		
 		/**
 		 * @var    Registry  Options for the zaz\Core data object.
 		 * @since  12.3

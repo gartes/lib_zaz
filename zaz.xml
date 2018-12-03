@@ -13,6 +13,7 @@
 
     <files>
         <folder>Core</folder>
+        <folder>Optimize</folder>
 
     </files>
 </extension>

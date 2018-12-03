@@ -14,6 +14,8 @@
 	use JFactory;
 	use Joomla\Registry\Registry;
 	use Core\CoreEmbed;
+	use JPluginHelper;
+	use JRegistry;
 	use JTable;
 	
 	class zazExtensions extends CoreEmbed
@@ -30,8 +32,6 @@
 		public function __construct ( Registry $options = null )
 		{
 			parent::__construct( $options );
-			
-			
 			
 		}
 		
@@ -105,5 +105,12 @@
 			}
 		}#END FN
 		
+		public static function getParamsPlugin ( $type , $plugin){
+			$plugin = JPluginHelper::getPlugin($type, $plugin );
+			//$params = new JParameter($plugin->params);//backward compatibility
+			$params = new JRegistry($plugin->params);//Joomla 1.6 Onward
+			
+			return $params ;
+		}
 		
 	}#END CLASS
