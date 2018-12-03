@@ -1,5 +1,7 @@
 <?php
 	/**
+	 * Работа с компонентами Joomla
+	 *
 	 * @package     Core
 	 * @subpackage
 	 *
@@ -32,25 +34,6 @@
 			
 			
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		/**
 		 * Gets the id of the Joomla table where the plugin is registered
@@ -91,18 +74,6 @@
 			}#END IF
 			
 		}#END FN
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		/**
 		 * Сохранить конфиг расшерения
