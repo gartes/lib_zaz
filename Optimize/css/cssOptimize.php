@@ -10,7 +10,7 @@
 	 */
 	
 	
-	
+	use Core\js\CoreJs;
 	use Optimize\OptimizeEmbed;
 	use Joomla\Registry\Registry;
 	
@@ -41,9 +41,12 @@
 		 */
 		public function getAllCss(){
 			
-			//$app = \JFactory::getApplication() ;
+			
 			
 			$cssContents  = $this->getStylesheetData();
+			
+			
+			
 			return $cssContents ;
 			
 			
@@ -75,6 +78,42 @@
 			
 			return $CriticalCss ;
 		}#END FN
+		
+		/**
+		 * Создание ленивой загрузки для CSS Links
+		 *
+		 * @param $styleSheets
+		 *
+		 * @author    Gartes
+		 *
+		 * @since     3.8
+		 * @copyright 03.12.18
+		 *
+		 */
+		public function addLazyLoadingCss ($styleSheets){
+			
+			CoreJs::addCoreJs();
+			$scipt  = 'document.addEventListener("DOMContentLoaded", function () {   ';
+				$scipt .= 'Promise.all([';
+				foreach($styleSheets as $url => $opt ){
+					$scipt .= "zazCoreLoadAssets.css('".$url."'),";
+				}#END FOREACH
+			
+			$scipt .= "
+			
+			]).then(function() {
+				    console.log('LazyLoadingCss has loaded!');
+				  }).catch(function() {
+				    console.log('LazyLoadingCss , epic failure!');
+				  });
+				  
+				";
+			$scipt .= "});";
+			$doc = \JFactory::getDocument();
+			// $doc->addScriptDeclaration($scipt);
+			
+		}
+		
 		
 		
 		/**

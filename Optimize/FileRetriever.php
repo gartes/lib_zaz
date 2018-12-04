@@ -36,6 +36,9 @@
 		 */
 		public function getFileContents($sPath, $aPost = null, $aHeader = array(), $sOrigPath = '', $timeout=7)
 		{
+			 
+			
+			
 			//We need to use an http adapter if it's a remote or dynamic file
 			if (strpos($sPath, 'http') === 0)
 			{
@@ -44,18 +47,25 @@
 				
 				try
 				{
+					# TODO Вызывает ошибку если сервер со шрфотм не доступен
 					$sUserAgent = !empty($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
 					$aHeader = array_merge($aHeader, array('Accept-Encoding' => 'identity, deflate, *;q=0'));
 					$response = $this->oHttpAdapter->request($sPath, $aPost, $aHeader, $sUserAgent, $timeout);
 					$this->response_code = $response['code'];
 					
+					
+					
+					
 					if (!isset($response) || $response === FALSE)
 					{
-						throw new RuntimeException(sprintf('Failed getting file contents from %s', $sPath));
+						
+						  throw new RuntimeException(sprintf('Failed getting file contents from %s', $sPath));
 					}
 				}
 				catch (RuntimeException $ex)
 				{
+					
+					 
 					//Record error message
 					$this->response_error = $ex->getMessage();
 				}

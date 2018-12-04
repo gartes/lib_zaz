@@ -79,8 +79,8 @@
 			$aContentsArray = [];
 			
 			
-			$sContents = $this->combineFiles( $Stylesheet, 'css', $oCssParser );
-			$sContents = $this->prepareContents( $sContents );
+			 $sContents = $this->combineFiles( $Stylesheet, 'css', $oCssParser );
+			 $sContents = $this->prepareContents( $sContents );
 			
 			
 			$aContents = [
@@ -183,6 +183,7 @@
 				{
 					# If we're not caching just get the optimized content
 					# Если мы не кэшируем, просто получаем оптимизированный контент
+					
 					$sContent  = $this->cacheContent( $opt , $sType  , $oFileRetriever , $oCssParser  , FALSE );
 					$sContents .= $this->addCommentedUrl($sType, $aUrl) . $sContent . '|"LINE_END"|';
 				}
@@ -214,6 +215,7 @@
 		 */
 		function cacheContent( $aUrl, $sType , $oFileRetriever , $oCssParser  , $bPrepare   ){
 			
+			 
 			
 			$sContent= '';
 			# Convert local urls to file path
