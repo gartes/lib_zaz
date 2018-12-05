@@ -8,6 +8,19 @@ function zazCore () {
 
 
 var zazCoreLoadAssets = (function() {
+
+
+        jQuery("body").contents().filter(function(){
+            return this.nodeType == 8;
+        }).each(function(i, e){
+
+            console.log( e )
+
+            // alert(e.nodeValue);
+        });
+
+
+
     // Function which returns a function: https://davidwalsh.name/javascript-functions
     function _load(tag) {
         return function(url) {

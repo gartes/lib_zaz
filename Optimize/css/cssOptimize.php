@@ -93,7 +93,13 @@
 		public function addLazyLoadingCss ($styleSheets){
 			
 			CoreJs::addCoreJs();
-			$scipt  = 'document.addEventListener("DOMContentLoaded", function () {   ';
+			$scipt  = 'document.addEventListener("DOMContentLoaded", function () {
+			 
+			 setTimeout(()=>{
+			 
+			 
+			 
+			 ';
 				$scipt .= 'Promise.all([';
 				foreach($styleSheets as $url => $opt ){
 					$scipt .= "zazCoreLoadAssets.css('".$url."'),";
@@ -106,7 +112,7 @@
 				  }).catch(function() {
 				    console.log('LazyLoadingCss , epic failure!');
 				  });
-				  
+				  },2000)
 				";
 			$scipt .= "});";
 			$doc = \JFactory::getDocument();

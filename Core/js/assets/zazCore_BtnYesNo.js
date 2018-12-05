@@ -6,18 +6,18 @@
         console.log(event) ;
         console.log(row) ;
         $(row).find('select').chosen();
-    })
+    });
 
     InitBtn = function (row){
         $('.radio.btn-group label').addClass('btn');
-        $('fieldset.btn-group').each(function() {
+        $(row).find('fieldset.btn-group').each(function() {
             // Handle disabled, prevent clicks on the container, and add disabled style to each button
             if ($(this).prop('disabled')) {
                 $(this).css('pointer-events', 'none').off('click');
                 $(this).find('.btn').addClass('disabled');
             }
         });
-        $('.btn-group label:not(.active)').click(function()
+        $(row).find('.btn-group label:not(.active)').click(function()
         {
             var label = $(this);
             var input = $('#' + label.attr('for'));
