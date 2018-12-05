@@ -94,8 +94,12 @@
 			# Save the new parameters extension
 			$table = JTable::getInstance( 'extension' );
 			
+			
+			
 			$table->load( $extensionsId );
 			$table->bind( [ 'params' => $params ] );
+			
+			
 			
 			// Store the changes
 			if ( !$table->store() )

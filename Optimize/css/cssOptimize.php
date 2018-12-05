@@ -110,7 +110,7 @@
 				";
 			$scipt .= "});";
 			$doc = \JFactory::getDocument();
-			// $doc->addScriptDeclaration($scipt);
+			$doc->addScriptDeclaration($scipt);
 			
 		}
 		
