@@ -89,6 +89,8 @@
 		public function updateExtensionParams ( $params, $extensionsId = false )
 		{
 			
+			 
+			
 			if ( !$extensionsId ) $extensionsId = $this->_jid;
 			
 			# Save the new parameters extension
@@ -99,7 +101,7 @@
 			$table->load( $extensionsId );
 			$table->bind( [ 'params' => $params ] );
 			
-			
+		 
 			
 			// Store the changes
 			if ( !$table->store() )

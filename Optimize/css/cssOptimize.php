@@ -40,24 +40,31 @@
 		 *
 		 */
 		public function getAllCss(){
-			
-			
-			
 			$cssContents  = $this->getStylesheetData();
-			
-			
-			
 			return $cssContents ;
-			
-			
-			
-			
-			 
-			
-			
-			/*echo'<pre>';print_r( $CriticalCss );echo'</pre>'.__FILE__.' '.__LINE__;
-			die(__FILE__ .' Lines '. __LINE__ );*/
 		}#END FN
+		
+		
+		public function sendPost($fileCss , $url ){
+			$myCurl = curl_init();
+			curl_setopt_array($myCurl, array(
+				CURLOPT_URL => 'https://nobd.ml/node',
+				CURLOPT_TIMEOUT => 400 ,
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_POST => true,
+				CURLOPT_POSTFIELDS => http_build_query(array(/*здесь массив параметров запроса*/
+					'cssUrl' => $fileCss,
+					'urlSite' => $url ,
+					
+				))
+			));
+			$response = curl_exec($myCurl);
+			curl_close($myCurl);
+			return $response ;
+			
+			
+		}#END FN
+		
 		
 		/**
 		 * Получение критических стилей
