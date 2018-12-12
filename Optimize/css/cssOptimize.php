@@ -60,6 +60,9 @@
 			));
 			$response = curl_exec($myCurl);
 			curl_close($myCurl);
+			
+			echo'<pre>';print_r( $response );echo'</pre>'.__FILE__.' '.__LINE__;
+			
 			return $response ;
 			
 			
