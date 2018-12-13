@@ -45,25 +45,27 @@
 		}#END FN
 		
 		
-		public function sendPost($fileCss , $url ){
+		
+		// $ArrData
+		public function sendPost ( $ArrData )
+		{
 			$myCurl = curl_init();
-			curl_setopt_array($myCurl, array(
-				CURLOPT_URL => 'https://nobd.ml/node',
-				CURLOPT_TIMEOUT => 400 ,
+			curl_setopt_array( $myCurl, [
+				CURLOPT_URL            => 'https://nobd.ml/node',
+				CURLOPT_TIMEOUT        => 400,
 				CURLOPT_RETURNTRANSFER => true,
-				CURLOPT_POST => true,
-				CURLOPT_POSTFIELDS => http_build_query(array(/*здесь массив параметров запроса*/
-					'cssUrl' => $fileCss,
-					'urlSite' => $url ,
-					
-				))
-			));
-			$response = curl_exec($myCurl);
-			curl_close($myCurl);
+				CURLOPT_POST           => true,
+				CURLOPT_POSTFIELDS     => http_build_query($ArrData),
+			] );
+			$response = curl_exec( $myCurl );
+			curl_close( $myCurl );
+			$data = json_decode($response  )  ;
 			
-			echo'<pre>';print_r( $response );echo'</pre>'.__FILE__.' '.__LINE__;
+			if ( !isset($data->success) ) throw new \Exception('nobd.ml Сервис недоступен');
 			
-			return $response ;
+			// if ( !$response )
+				
+				return $data;
 			
 			
 		}#END FN
@@ -99,36 +101,31 @@
 		 * @since     3.8
 		 * @copyright 03.12.18
 		 *
+		 * @return bool
 		 */
 		public function addLazyLoadingCss ($styleSheets){
 			
+			
+			
+			
 			CoreJs::addCoreJs();
-			$scipt  = 'document.addEventListener("DOMContentLoaded", function () {
-			 
-			 setTimeout(()=>{
-			 
-			 
-			 
-			 ';
+			
+			$scipt  = 'document.addEventListener("DOMContentLoaded",()=>{setTimeout(()=>{';
 				$scipt .= 'Promise.all([';
 				foreach($styleSheets as $url => $opt ){
 					$scipt .= "zazCoreLoadAssets.css('".$url."'),";
 				}#END FOREACH
 			
-			$scipt .= "
-			
-			]).then(function() {
-				    console.log('LazyLoadingCss has loaded!');
-				  }).catch(function() {
-				    console.log('LazyLoadingCss , epic failure!');
-				  });
-				  },2000)
-				";
+			$scipt .= "])";
+			$scipt .= ".then(function() {console.log('LazyLoadingCss has loaded!');})";
+			$scipt .= ".catch(function(){console.log('LazyLoadingCss , epic failure!');";
+			$scipt .= "});";
+			$scipt .= "},2000)";
 			$scipt .= "});";
 			$doc = \JFactory::getDocument();
 			$doc->addScriptDeclaration($scipt);
-			
-		}
+			return true ;
+		}#END FN
 		
 		
 		
